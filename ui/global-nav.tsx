@@ -68,7 +68,7 @@ export function GlobalNav() {
             );
           })}
         </nav>
-        <Byline className="absolute hidden sm:block" />
+        {/* <Byline className="absolute hidden sm:block" /> */}
       </div>
     </div>
   );

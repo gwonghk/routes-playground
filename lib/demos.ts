@@ -103,4 +103,19 @@ export const demos: { name: string; items: Item[] }[] = [
       },
     ],
   },
+  {
+    name: 'Projects',
+    items: [
+      {
+        name: 'Explore Static Page Generation',
+        slug: 'understanding-static-page-generation',
+        description: 'copy of generated pages',
+      },
+      {
+        name: 'Pokemon Notes',
+        slug: 'pokemon-notes',
+        description: 'demo for basic data fetching',
+      },
+    ],
+  },
 ];
