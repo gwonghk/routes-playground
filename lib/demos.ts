@@ -116,6 +116,12 @@ export const demos: { name: string; items: Item[] }[] = [
         slug: 'pokemon-notes',
         description: 'demo for basic data fetching',
       },
+      {
+        name: 'Basic Form Submission',
+        slug: 'basic-form',
+        description:
+          'demo for multi page basic form submission using native react',
+      },
     ],
   },
 ];
