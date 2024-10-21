@@ -1,7 +1,9 @@
 'use client';
 
 import type { FormEvent } from 'react';
-import { FormProvider } from './form-context';
+import { FormProvider, FormContext, useFormState } from './form-context';
+
+import useMultistepForm from './hooks/useMultistepForm';
 
 import FormField from './components/formField';
 import Step from './components/step';
@@ -12,65 +14,85 @@ const fields = [
     label: 'First name',
     placeholder: 'John',
     type: 'text',
+    step: 1,
   },
   {
     id: 'last_name',
     label: 'Last name',
     placeholder: 'Doe',
     type: 'text',
+    step: 1,
   },
   {
     id: 'company',
     label: 'Company',
     placeholder: 'Flowbite',
     type: 'text',
+    step: 1,
   },
   {
     id: 'phone',
     label: 'Phone',
     placeholder: '123-45-678',
     type: 'tel',
+    step: 1,
   },
   {
     id: 'website',
     label: 'Website',
     placeholder: 'flowbite.com',
     type: 'url',
+    step: 1,
   },
   {
     id: 'visitors',
     label: 'Unique visitors (per month)',
     placeholder: '',
     type: 'number',
+    step: 1,
+  },
+  {
+    id: 'visitors2',
+    label: 'Unique visitors2 (per month)',
+    placeholder: '',
+    type: 'number',
+    step: 2,
   },
 ];
 
-const Page = () => {
+const Form = () => {
+  const [formState] = useFormState();
+  const stepProps = useMultistepForm(2);
+  const currentStepIdx = stepProps.currentStepIdx;
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log('submit');
+    console.info('⚠️call submit api with:', formState);
   };
 
-  return (
-    <FormProvider>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <Step />
-          <hr className="my-8 h-px border-0 bg-gray-200 dark:bg-gray-700"></hr>
-        </div>
+  const filteredFields = fields.filter(
+    ({ step }) => step === currentStepIdx + 1,
+  );
 
-        <div className="mb-6 grid gap-6 md:grid-cols-2">
-          {fields.map(({ id, label, placeholder, type }) => (
-            <FormField
-              key={id}
-              id={id}
-              label={label}
-              placeholder={placeholder}
-              type={type}
-            />
-          ))}
-        </div>
-        {/* <div className="mb-6">
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <Step stepProps={stepProps} />
+        <hr className="my-8 h-px border-0 bg-gray-200 dark:bg-gray-700"></hr>
+      </div>
+
+      <div className="mb-6 grid gap-6 md:grid-cols-2">
+        {filteredFields.map(({ id, label, placeholder, type }) => (
+          <FormField
+            key={id}
+            id={id}
+            label={label}
+            placeholder={placeholder}
+            type={type}
+          />
+        ))}
+      </div>
+      {/* <div className="mb-6">
           <label
             htmlFor="email"
             className="text-white-900 mb-2 block text-sm font-medium dark:text-white"
@@ -139,13 +161,20 @@ const Page = () => {
             .
           </label>
         </div> */}
-        <button
-          type="submit"
-          className="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
-        >
-          Submit
-        </button>
-      </form>
+      <button
+        type="submit"
+        className="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
+      >
+        Submit
+      </button>
+    </form>
+  );
+};
+
+const Page = () => {
+  return (
+    <FormProvider>
+      <Form />
     </FormProvider>
   );
 };

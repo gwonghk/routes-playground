@@ -19,7 +19,7 @@ const Field = ({
 }) => {
   const [value, setValue] = useState('');
 
-  const handleOnInput = (e: FormEvent<HTMLInputElement>) => {
+  const handleOnInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setValue(e.target.value);
   };
