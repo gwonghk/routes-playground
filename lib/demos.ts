@@ -122,6 +122,11 @@ export const demos: { name: string; items: Item[] }[] = [
         description:
           'demo for multi page basic form submission using native react',
       },
+      {
+        name: 'Road to Masterball Calculator',
+        slug: 'ptcgp-road-to-masterball-calculator',
+        description: 'Calculate how many games you need to get to masterball',
+      },
     ],
   },
 ];

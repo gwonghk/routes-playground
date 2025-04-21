@@ -2780,6 +2780,10 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
+next-themes@0.4.6:
+  version "0.4.6"
+  resolved "https://registry.yarnpkg.com/next-themes/-/next-themes-0.4.6.tgz#8d7e92d03b8fea6582892a50a928c9b23502e8b6"
+
 next@14.3.0-canary.33:
   version "14.3.0-canary.33"
   resolved "https://registry.yarnpkg.com/next/-/next-14.3.0-canary.33.tgz#f7566954ae9bf1799dea97fe3a1ddeb78e09c510"
@@ -3215,6 +3219,10 @@ react-dom@18.2.0:
   dependencies:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
+
+react-hook-form@7.56.0:
+  version "7.56.0"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.56.0.tgz#2ab5911a959f0173f4194849615d73a4fff39390"
 
 react-is@^16.13.1:
   version "16.13.1"
