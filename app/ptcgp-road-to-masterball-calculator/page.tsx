@@ -2,6 +2,8 @@
 
 import { useForm, SubmitHandler } from 'react-hook-form';
 
+import WinRateDropdown from './components/win-rate-dropdown';
+
 type Inputs = {
   example: string;
 };
@@ -20,6 +22,14 @@ const RoadToMasterballCalculator = () => {
 
   return (
     <form className="mx-auto max-w-sm" onSubmit={handleSubmit(onSubmit)}>
+      <div>
+        Calculation: Average points per game = (Win Rate * 10) + ((1 - Win Rate)
+        * -7)
+      </div>
+      <hr />
+
+      <WinRateDropdown />
+
       <label
         htmlFor="number-input"
         className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
@@ -34,7 +44,6 @@ const RoadToMasterballCalculator = () => {
         defaultValue="123"
         {...register('example')}
       />
-
       <button
         type="submit"
         className="mb-2 me-2 rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"

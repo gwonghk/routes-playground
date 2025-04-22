@@ -16,7 +16,7 @@ export default function ThemeToggle() {
     <div className="ml-3 flex flex-col justify-center">
       <input
         type="checkbox"
-        name="light-switch"
+        id="light-switch"
         className="light-switch sr-only"
         checked={theme === 'light'}
         onChange={handleOnChange}

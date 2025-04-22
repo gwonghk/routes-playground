@@ -2,6 +2,7 @@
 
 import React, { Suspense } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
+import ThemeToggle from './theme-toggle';
 
 function Params() {
   const searchParams = useSearchParams()!;
@@ -86,6 +87,9 @@ export function AddressBar() {
         <Suspense>
           <Params />
         </Suspense>
+      </div>
+      <div className="ml-auto">
+        <ThemeToggle />
       </div>
     </div>
   );
