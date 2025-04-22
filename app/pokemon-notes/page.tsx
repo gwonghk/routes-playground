@@ -1,3 +1,4 @@
+import type { InferGetServerSidePropsType, GetServerSideProps } from 'next';
 import Pokemon from './pokemon';
 
 const getRandomGenOnePokemon = async () => {
@@ -18,6 +19,26 @@ const getRandomGenOnePokemon = async () => {
   }
 };
 
+// export const getServerSideProps = (async () => {
+//   const res = await getRandomGenOnePokemon();
+//   return {
+//     props: {
+//       pokemon: res,
+//     },
+//   };
+// }) satisfies GetServerSideProps<{ pokemon: PokemonT }>;
+
+type PokemonT = {
+  id: number;
+  name: string;
+  sprites: {
+    front_default: string;
+  };
+  cries: {
+    latest: string;
+  };
+};
+
 const PokemonNotesPage = async () => {
   //   const [pokemon, setPokemon] = React.useState({});
 
@@ -31,9 +52,10 @@ const PokemonNotesPage = async () => {
   //     setPokemon({ id, name, img, cry });
   //   };
 
-  //   console.log(pokemon);
-
-  const pokemon = await getRandomGenOnePokemon();
+  const pokemon: PokemonT = await getRandomGenOnePokemon();
+  if (!pokemon) {
+    return null;
+  }
 
   const {
     id,
