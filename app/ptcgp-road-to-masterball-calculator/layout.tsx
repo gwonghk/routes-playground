@@ -13,7 +13,7 @@ export const metadata = {
 const Layout: FC<PropsWithChildren<{}>> = ({ children }) => {
   return (
     <div>
-      <h1>Road To Masterball</h1>
+      <h1>Ultraball To Masterball</h1>
       <hr></hr>
       <div>{children}</div>
     </div>
